@@ -213,7 +213,21 @@ vcl::hierarchy_mesh_drawable create_tree() {
     return tree;
 }
 
-void init_park(vcl::mesh_drawable& square, vcl::mesh_drawable& lac, vcl::hierarchy_mesh_drawable& tree,int r_v,int r_h,float u0,float v0, const gui_scene_structure& gui_scene, std::map<std::string, GLuint>& shaders, std::vector<vcl::vec3>& park_pos, std::vector<vcl::vec3>& tree_pos, std::vector<vcl::vec2>& park_pos_2, GLuint& texture_id_park, GLuint& texture_lac) {
+vcl::hierarchy_mesh_drawable create_tree_simple() {
+    float ratio = 1.5f;
+    vcl::hierarchy_mesh_drawable tree;
+    mesh_drawable tronc = mesh_drawable(mesh_primitive_cylinder(0.05f * ratio, { 0,0,0 }, { 0,0,0.4f * ratio }));
+    mesh_drawable cime = mesh_drawable(mesh_primitive_cone(0.15f * ratio, { 0,0,0 }, { 0,0,0.1f * ratio }));
+    tronc.texture_id = create_texture_gpu(image_load_png("scenes/projet/assets/ecorce.png"));
+    cime.texture_id = create_texture_gpu(image_load_png("scenes/projet/assets/feuillage.png"));
+    tree.add(tronc, "tronc");
+    tree.add(cime, "cime1", "tronc", { 0,0,0.2f * ratio });
+    tree.add(cime, "cime2", "tronc", { 0,0,0.3f * ratio });
+    tree.add(cime, "cime3", "tronc", { 0,0,0.4f * ratio });
+    return tree;
+}
+
+void init_park(vcl::mesh_drawable& square, vcl::mesh_drawable& lac, vcl::hierarchy_mesh_drawable& tree, vcl::hierarchy_mesh_drawable& tree_simple, int r_v,int r_h,float u0,float v0, const gui_scene_structure& gui_scene, std::map<std::string, GLuint>& shaders, std::vector<vcl::vec3>& park_pos, std::vector<vcl::vec3>& tree_pos, std::vector<vcl::vec2>& park_pos_2, GLuint& texture_id_park, GLuint& texture_lac) {
     texture_id_park = create_texture_gpu(image_load_png("scenes/3D_graphics/projet/assets/test.png"));
     texture_lac = create_texture_gpu(image_load_png("scenes/3D_graphics/projet/assets/mer.png"));
     square = create_park(r_v, r_h, u0, v0, gui_scene);
@@ -222,10 +236,12 @@ void init_park(vcl::mesh_drawable& square, vcl::mesh_drawable& lac, vcl::hierarc
     
     park_pos_2 = create_park_pos_2();
     park_pos = create_park_pos(r_v, r_h, gui_scene, park_pos_2);
-    tree_pos = create_tree_pos(r_v, r_h, gui_scene, park_pos_2);/*
+    tree_pos = create_tree_pos(r_v, r_h, gui_scene, park_pos_2);
     tree = create_tree();
     tree.set_shader_for_all_elements(shaders["mesh"]);
-    */
+    tree_simple = create_tree_simple() ;
+    tree_simple.set_shader_for_all_elements(shaders["mesh"]);
+    
     lac = create_lac(r_v, r_h, u0, v0, gui_scene);
     lac.uniform.color = { 1.0f,1,1 };
     lac.uniform.shading.specular = 0.0f; // non-specular terrain material
@@ -234,7 +250,7 @@ void init_park(vcl::mesh_drawable& square, vcl::mesh_drawable& lac, vcl::hierarc
     
 }
 
-void draw_park(vcl::mesh_drawable& square, vcl::mesh_drawable& lac, vcl::hierarchy_mesh_drawable& tree, int r_v, int r_h, float u0, float v0, const gui_scene_structure& gui_scene, std::map<std::string, GLuint>& shaders, std::vector<vcl::vec3>& park_pos,  std::vector<vcl::vec3>& tree_pos, std::vector<vcl::vec2>& park_pos_2, GLuint& texture_id_park, scene_structure& scene, GLuint& texture_lac) {
+void draw_park(vcl::mesh_drawable& square, vcl::mesh_drawable& lac, vcl::hierarchy_mesh_drawable& tree, vcl::hierarchy_mesh_drawable& tree_simple, int r_v, int r_h, float u0, float v0, const gui_scene_structure& gui_scene, std::map<std::string, GLuint>& shaders, std::vector<vcl::vec3>& park_pos,  std::vector<vcl::vec3>& tree_pos, std::vector<vcl::vec2>& park_pos_2, GLuint& texture_id_park, scene_structure& scene, GLuint& texture_lac) {
     glBindTexture(GL_TEXTURE_2D, texture_id_park);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
@@ -243,16 +259,27 @@ void draw_park(vcl::mesh_drawable& square, vcl::mesh_drawable& lac, vcl::hierarc
         square.uniform.transform.translation = o;
         draw(square, scene.camera, shaders["mesh"]);
     }
-    /*
+    
+    int cmp=0;
     for (vec3 position : tree_pos) {
-        tree["tronc0-0"].transform.translation = position; // le premier tronc
-        tree.update_local_to_global_coordinates();
-        draw(tree, scene.camera);
+        if (cmp%4==0){
+            tree["tronc0-0"].transform.translation = position;
+            tree.update_local_to_global_coordinates();
+            draw(tree, scene.camera);
+        }
+        else{
+            tree_simple["tronc"].transform.translation = position;
+            tree_simple.update_local_to_global_coordinates();
+            draw(tree_simple, scene.camera);
+
+        }
+        ++cmp;
+
     }
     
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    */
+    
     glBindTexture(GL_TEXTURE_2D, texture_lac);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
