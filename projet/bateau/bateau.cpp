@@ -255,7 +255,7 @@ void draw_bateau(std::vector<particle_element>& pos, std::vector<vec3>& fo, floa
         const float y = 400 * (v - 0.5f);
         const float c = 245 / 255.0f + 0.7f * noise;
 
-        bateau["coque"].transform.translation = { x,y,15 + 0.4f * cos(noise * x * 2 * 3.14f / 9.0f - t * 2 * 3.14f / 1 + noise * y * 2 * 3.14f / 3.0f) +1.0f };
+        bateau["coque"].transform.translation = { x,y,16 + 0.4f * cos(noise * x * 2 * 3.14f / 9.0f - t * 2 * 3.14f / 1 + noise * y * 2 * 3.14f / 3.0f) +1.0f };
         bateau["coque"].transform.rotation = rotation_from_axis_angle_mat3({ 1,0,0 }, 0.02 * std::sin(t * 6) - 1.57f) * rotation_from_axis_angle_mat3({ 0,0,1 }, 0.01 * std::sin(t * 6));
         bateau.update_local_to_global_coordinates();
         draw(bateau, scene.camera, shaders["mesh"]);
