@@ -88,7 +88,6 @@ mesh create_cylindre_coque(float r, float length, int i, float y_actuel)
 mesh create_coque(float r, float length)
 {
     // Number of samples
-    const size_t N = 20;
     const size_t n = 20; // nombre de cylindres
     mesh m = create_cylindre_coque(r, length, 0, 0);
     float y_actuel = length / n;
@@ -163,10 +162,8 @@ mesh_drawable update_voile(std::vector<particle_element>& pos, std::vector<vec3>
     float const ratio = 4.0f;
     for (int k = 0; k < N; k++) {
         for (int i = 0; i < k + 1; i++) {
-            float u = ratio * (1 - k / float(N - 1));
-            float v = ratio * i / float(N - 1);
             voi.position.push_back(ratio * pos[k * (k + 1) / 2 + i].p);
-            voi.color.push_back(vec4(u / ratio, v / ratio, (v + u) / (2.0f * ratio), 1));
+            voi.color.push_back((1,1,1,1));
         }
     }
     for (int k = 0; k < N - 1; k++) {
