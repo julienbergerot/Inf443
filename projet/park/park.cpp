@@ -161,7 +161,7 @@ std::vector<vcl::vec2> create_park_pos_2() {
 std::vector<vcl::vec3> create_tree_pos(int v_larg, int h_high, const gui_scene_structure& gui_scene, std::vector<vcl::vec2>& o_2) {
     std::vector<vcl::vec3> tree_pos;
     for (vec2 p : o_2) {
-        for (unsigned int k = 0; k < 2; k++) {
+        for (unsigned int k = 0; k < 15; k++) {
             float u = rand_interval(); //u0 
             float v = rand_interval();  //v0
             vcl::vec3 m = evaluate_park(v_larg, h_high, gui_scene, u, v) + vec3(20 * (v_larg * 3 * p[0] / 100.0f), 20 * (h_high * 3 * p[1] / 100.0f), +0.1f);
