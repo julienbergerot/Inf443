@@ -43,7 +43,7 @@ void update_mer(mesh_drawable& mer, float t) {
             const float y = 500 * (v - 0.5f);
             const float c = 245 / 255.0f + 0.7f * noise;
 
-            terrain.position[kv + N * ku] = { x,y,15.5f + 0.4f * cos(noise * x * 2 * 3.14f / 9.0f - t * 2 * 3.14f / 1 + noise * y * 2 * 3.14f / 3.0f) };
+            terrain.position[kv + N * ku] = { x,y,16 + 0.4f * cos(noise * x * 2 * 3.14f / 9.0f - t * 2 * 3.14f / 1 + noise * y * 2 * 3.14f / 3.0f) };
             terrain.texture_uv[kv + N * ku] = { 3 * u,3 * v };
             terrain.color[kv + N * ku] = { c,c,c,1 };
 
@@ -368,7 +368,7 @@ mesh create_mer()
 
             const float c = 245 / 255.0f + 0.7f * noise;
 
-            terrain.position[kv + N * ku] = { x,y,15 + 0.4f * cos(x * noise * 2 * 3.14f / 9.0f + noise * y * 2 * 3.14f / 3.0f) };
+            terrain.position[kv + N * ku] = { x,y,16 + 0.4f * cos(x * noise * 2 * 3.14f / 9.0f + noise * y * 2 * 3.14f / 3.0f) };
             terrain.texture_uv[kv + N * ku] = { 3 * u,3 * v };
             terrain.color[kv + N * ku] = { c,c,c,1 };
 
@@ -414,7 +414,7 @@ mesh create_cube(float u) {
     cube.position.push_back({ -u,u,-0.1f });
     cube.position.push_back({ -u,u,-0.1f });
 
-    //connectivité
+    //connectivitÃ©
 
     const uint3 triangle_1 = { 1,11,6 };
     const uint3 triangle_2 = { 11,6,7 };
