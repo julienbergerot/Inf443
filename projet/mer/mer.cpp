@@ -71,21 +71,6 @@ void update_mer(mesh_drawable& mer, float t) {
         }
     }
 
-
-    for (size_t ku = 0; ku < N; ++ku)
-    {
-        for (size_t kv = 0; kv < N; ++kv)
-        {
-            // Compute local parametric coordinates (u,v) \in [0,1]
-            const float u = ku / (N - 1.0f);
-            const float v = kv / (N - 1.0f);
-            const float x = 100 * (u - 0.5f);
-            const float y = 100 * (v - 0.5f);
-
-
-
-        }
-    }
     mer = terrain;
 
 
