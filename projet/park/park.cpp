@@ -218,8 +218,8 @@ vcl::hierarchy_mesh_drawable create_tree_simple() {
     vcl::hierarchy_mesh_drawable tree;
     mesh_drawable tronc = mesh_drawable(mesh_primitive_cylinder(0.05f * ratio, { 0,0,0 }, { 0,0,0.4f * ratio }));
     mesh_drawable cime = mesh_drawable(mesh_primitive_cone(0.15f * ratio, { 0,0,0 }, { 0,0,0.1f * ratio }));
-    tronc.texture_id = create_texture_gpu(image_load_png("scenes/projet/assets/ecorce.png"));
-    cime.texture_id = create_texture_gpu(image_load_png("scenes/projet/assets/feuillage.png"));
+    tronc.texture_id = create_texture_gpu(image_load_png("scenes/3D_graphics/projet/assets/ecorce.png"));
+    cime.texture_id = create_texture_gpu(image_load_png("scenes/3D_graphics/projet/assets/feuillage.png"));
     tree.add(tronc, "tronc");
     tree.add(cime, "cime1", "tronc", { 0,0,0.2f * ratio });
     tree.add(cime, "cime2", "tronc", { 0,0,0.3f * ratio });
