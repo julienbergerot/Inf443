@@ -22,7 +22,7 @@ float evaluate_terrain_z(float u, float v, const gui_scene_structure& gui_scene)
 {
     
 
-    // pour coller à tt sol
+    // pour coller Ã  tt sol
     const float scaling = 0.35f;
     const int octave = 7;
     const float persistency = 0.7f;
@@ -59,9 +59,6 @@ float evaluate_terrain_z(float u, float v, const gui_scene_structure& gui_scene)
     const float x = 60 * (u - 0.5f);
     const float y = 60 * (v - 0.5f);
     float z = height;
-
-    const float c = 245 / 255.0f + 0.7f * noise;
-
     // Compute coordinates
 
 
