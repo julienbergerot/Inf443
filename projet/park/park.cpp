@@ -229,7 +229,7 @@ vcl::hierarchy_mesh_drawable create_tree_simple() {
 
 void init_park(vcl::mesh_drawable& square, vcl::mesh_drawable& lac, vcl::hierarchy_mesh_drawable& tree, vcl::hierarchy_mesh_drawable& tree_simple, int r_v,int r_h,float u0,float v0, const gui_scene_structure& gui_scene, std::map<std::string, GLuint>& shaders, std::vector<vcl::vec3>& park_pos, std::vector<vcl::vec3>& tree_pos, std::vector<vcl::vec2>& park_pos_2, GLuint& texture_id_park, GLuint& texture_lac) {
     texture_id_park = create_texture_gpu(image_load_png("scenes/3D_graphics/projet/assets/test.png"));
-    texture_lac = create_texture_gpu(image_load_png("scenes/3D_graphics/projet/assets/mer.png"));
+    texture_lac = create_texture_gpu(image_load_png("scenes/3D_graphics/projet/assets/lac.png"));
     square = create_park(r_v, r_h, u0, v0, gui_scene);
     square.uniform.color = { 1.0f,1,1 };
     square.uniform.shading.specular = 0.0f; // non-specular terrain material
