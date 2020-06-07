@@ -160,8 +160,7 @@ mesh create_cylindre_courbe(float r, float height, int i, float h_actuelle)
 
 mesh create_cou(float r, float height)
 {
-    // Number of samples
-    const size_t N = 20;
+    // Number of sample
     const size_t n = 60; // nombre de cylindres
     mesh m = create_cylindre_courbe(r, height, 0, 0);
     float h_actuelle = height / n;
@@ -219,7 +218,6 @@ mesh create_cylindre_aile(float r, float length, int i, float x_actuel)
 mesh create_aile(float r, float length)
 {
     // Number of samples
-    const size_t N = 20;
     const size_t n = 30; // nombre de cylindres
     mesh m = create_cylindre_aile(r, length, 0, 0);
     float x_actuel = length / n;
@@ -237,18 +235,14 @@ mesh create_cylindre_corps(float r, float length, int i, float x_actuel, std::ve
 {
 
     mesh m;
-    const float scaling = 0.0;
-    const int octave = 8;
-    const float persistency = 0.5;
-    const float height = 0.1;
 
-    // Evaluate Perlin noise
+
+
     const size_t N = 100; //nb points par cercles
     const size_t n = 200; //nb cercles
 
     m.texture_uv.resize(2 * N);
     float r2;
-    float r_courant = rayon_cygne(r, n, i);
     float r_suivant = rayon_cygne(r, n, i + 1);
     float y_courant = x_actuel;
     float y_suivant = y_courant + length / n;
