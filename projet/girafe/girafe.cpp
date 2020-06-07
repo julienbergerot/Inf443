@@ -130,10 +130,7 @@ void draw_giraffe(std::map<std::string, GLuint>& shaders, scene_structure& scene
     hierarchy.update_local_to_global_coordinates();
     //trajectoire
     const int idx = index_at_value(t, keyframes);
-    // Assume a closed curve trajectory
-    const size_t N = keyframes.size();
-    // Preparation of data for the linear interpolation
-    // Parameters used to compute the linear interpolation
+
     const float t0 = keyframes[idx - 1].t; // = t_i-1
     const float t1 = keyframes[idx].t; // = t_i
     const float t2 = keyframes[idx + 1].t; // = t_{i+1}
