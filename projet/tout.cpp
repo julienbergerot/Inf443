@@ -54,7 +54,7 @@ void scene_model::setup_data(std::map<std::string, GLuint>& shaders, scene_struc
     texture_id_2 = create_texture_gpu(image_load_png("scenes/3D_graphics/projet/assets/roche.png"));
     
     // park
-    init_park(square, lac, tree, r_v, r_h, u0, v0, gui_scene, shaders, park_pos, tree_pos, park_pos_2, texture_id_park,texture_lac);
+    init_park(square, lac, tree,tree_simple, r_v, r_h, u0, v0, gui_scene, shaders, park_pos, tree_pos, park_pos_2, texture_id_park,texture_lac);
     
     // cygne
     init_cygne( cygne,cygne_pos,texture_plumes,  r_v,  r_h, gui_scene,  park_pos_2,shaders);
@@ -132,7 +132,7 @@ void scene_model::frame_draw(std::map<std::string, GLuint>& shaders, scene_struc
     draw(terrain, scene.camera, shaders["mesh"]);
     
     // park et arbres
-    draw_park(square, lac, tree, r_v, r_h, u0, v0, gui_scene, shaders, park_pos, tree_pos, park_pos_2, texture_id_park,scene, texture_lac);
+    draw_park(square, lac, tree,tree_simple, r_v, r_h, u0, v0, gui_scene, shaders, park_pos, tree_pos, park_pos_2, texture_id_park,scene, texture_lac);
     
     // cygne 
     cygne.update_local_to_global_coordinates();
