@@ -295,9 +295,7 @@ float get_angle_z(vec3 p1, vec3 p2) {
     return re + 3.14;
 }
 
-void vole(vec3 p) {
-    // ok
-}
+
 
 vcl::buffer<vec3t> create_keyframes_h(const gui_scene_structure& gui_scene, float u_s, float u_dest) {
     // float u_s = 0.5f; // start
@@ -359,13 +357,13 @@ vcl::buffer<vec3t> create_keyframes_h(const gui_scene_structure& gui_scene, floa
         key.push_back(o);
     }
 
-    for (unsigned int k = 1; k < 10; k++) { // posée en haut
+    for (unsigned int k = 1; k < 10; k++) { // posÃ©e en haut
         o.p = { 20.0f * (u_dest - 0.5f),20.0f * (v_v - 0.1f - 0.1f * 7.8f - 0.004f * 7 - 0.5f),z + 2.24f - 0.2f / 6.0f * 7 };
         o.t = 6.0f + 0.3f * 6 + 2.5f * N + k;
         key.push_back(o);
     }
 
-    for (int k = 1; k < 10; k++) { // décole d'en haut
+    for (int k = 1; k < 10; k++) { // dÃ©cole d'en haut
         o.p = { 20.0f * (u_dest - 0.5f),20.0f * (v_v - 0.1f - 0.1f * 7.8f - 0.004f * (7 + k) - 0.5f),z + 2.24f - 0.2f * (7.0f - k) / 6.0f };
         o.t = 6.0f + 0.3f * 6 + 2.5f * N + 9.0f + 0.3f * k;
         key.push_back(o);
@@ -459,13 +457,13 @@ vcl::buffer<vec3t> create_keyframes_v(const gui_scene_structure& gui_scene, floa
         key.push_back(o);
     }
 
-    for (unsigned int k = 1; k < 10; k++) { // posée en haut
+    for (unsigned int k = 1; k < 10; k++) { // posÃ©e en haut
         o.p = { 20.0f * (u_v - 0.1f - 0.1f * 7.8f - 0.004f * 7 - 0.5f),20.0f * (v_dest - 0.5f),z + 2.24f - 0.2f / 6.0f * 7 };
         o.t = 6.0f + 0.3f * 6 + 2.5f * N + k;
         key.push_back(o);
     }
 
-    for (int k = 1; k < 10; k++) { // décole d'en haut
+    for (int k = 1; k < 10; k++) { // dÃ©cole d'en haut
         o.p = { 20.0f * (u_v - 0.1f - 0.1f * 7.8f - 0.004f * (7 + k) - 0.5f),20.0f * (v_dest - 0.5f),z + 2.24f - 0.2f * (7.0f - k) / 6.0f };
         o.t = 6.0f + 0.3f * 6 + 2.5f * N + 9.0f + 0.3f * k;
         key.push_back(o);
@@ -510,8 +508,7 @@ std::vector<vcl::buffer<vec3t>> create_car_pos(const gui_scene_structure& gui_sc
 void draw_voiture_h(float t, vcl::buffer<vec3t>& keyframes, float t_vol, bool vol, const gui_scene_structure& gui_scene, scene_structure& scene, vcl::hierarchy_mesh_drawable& car) {
     const int idx = index_at_value(t, keyframes);
 
-    // Assume a closed curve trajectory
-    const size_t N = keyframes.size();
+
 
 
     // Preparation of data for the linear interpolation
@@ -536,8 +533,6 @@ void draw_voiture_h(float t, vcl::buffer<vec3t>& keyframes, float t_vol, bool vo
     vec3 p_apres = cardinal_spline_interpolation(t + 0.1f, t0, t1, t2, t3, p0, p1, p2, p3, 0.4f);
 
 
-    vole(p);
-
     if (t > t_vol) { vol = true; } // changer
     if (t > 32.0f) { vol = false; } // changer
 
@@ -551,7 +546,7 @@ void draw_voiture_h(float t, vcl::buffer<vec3t>& keyframes, float t_vol, bool vo
     mat3 R_tourner_x_w = rotation_from_axis_angle_mat3({ 0,0,1 }, 0);
     mat3 R_tourner_y_w = rotation_from_axis_angle_mat3({ 0,1,0 }, t * 6);
 
-    if (vol && t > t_vol) {  //en vol les roues tournent pas et sont a 90°
+    if (vol && t > t_vol) {  //en vol les roues tournent pas et sont a 90Â°
         R_tourner_x_w = rotation_from_axis_angle_mat3({ 1,0,0 }, 6.28f / 4.0f);
         R_tourner_y_w = rotation_from_axis_angle_mat3({ 0,1,0 }, 0);
     }
@@ -585,8 +580,7 @@ void draw_voiture_h(float t, vcl::buffer<vec3t>& keyframes, float t_vol, bool vo
 void draw_voiture_v(float t, vcl::buffer<vec3t>& keyframes, float t_vol, bool vol, const gui_scene_structure& gui_scene, scene_structure& scene, vcl::hierarchy_mesh_drawable& car) {
     const int idx = index_at_value(t, keyframes);
 
-    // Assume a closed curve trajectory
-    const size_t N = keyframes.size();
+
 
 
     // Preparation of data for the linear interpolation
@@ -611,7 +605,6 @@ void draw_voiture_v(float t, vcl::buffer<vec3t>& keyframes, float t_vol, bool vo
     vec3 p_apres = cardinal_spline_interpolation(t + 0.1f, t0, t1, t2, t3, p0, p1, p2, p3, 0.4f);
 
 
-    vole(p);
 
     if (t > t_vol) { vol = true; } // changer
     if (t > 32.0f) { vol = false; } // changer
@@ -626,7 +619,7 @@ void draw_voiture_v(float t, vcl::buffer<vec3t>& keyframes, float t_vol, bool vo
     mat3 R_tourner_x_w = rotation_from_axis_angle_mat3({ 0,0,1 }, 0);
     mat3 R_tourner_y_w = rotation_from_axis_angle_mat3({ 0,1,0 }, t * 6);
 
-    if (vol && t > t_vol) {  //en vol les roues tournent pas et sont a 90°
+    if (vol && t > t_vol) {  //en vol les roues tournent pas et sont a 90Â°
         R_tourner_x_w = rotation_from_axis_angle_mat3({ 1,0,0 }, 6.28f / 4.0f);
         R_tourner_y_w = rotation_from_axis_angle_mat3({ 0,1,0 }, 0);
     }
