@@ -27,11 +27,11 @@ using namespace vcl;
 
 void scene_model::setup_data(std::map<std::string, GLuint>& shaders, scene_structure&, gui_structure&)
 {
-    // valeurs g�n�rales
+    // valeurs générales
     t_vol = 8;
     vol = false;
-    int r_v = 4; // larg routes verticales
-    int r_h = 5;  // larg routes horizontales
+    int r_v = 4; // largeur des routes verticales. Ici la ville est un carré de taille 20 par 20. les routes selon y ont une largeur de 4 et celles selon x, une largeur de 5
+    int r_h = 5;  // largeur routes horizontales. Ces constantes sont utilisées pour positionner les routes, bâtiments, parcs, hommes et voitures 
 
     
     // phare
