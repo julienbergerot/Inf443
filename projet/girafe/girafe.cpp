@@ -148,273 +148,315 @@ void draw_giraffe(std::map<std::string, GLuint>& shaders, scene_structure& scene
     hierarchy["body"].transform.rotation = R_tourner_z;
     draw(hierarchy, scene.camera);
 }
-std::vector<vec3t> create_keyframes_g(float x0, float y0) {
+std::vector<vec3t> create_keyframes_g(float x0, float y0){
     std::vector<vec3t> keyframe_giraffe;
-    float t = 0;
-    if (0 < x0 < 11 && y0 < -1) {
-        y0 = -11;
-        if (x0 > 10) {
-            x0 = 10;
+    float t=0;
+    if (0<x0 && y0 <-1){
+        y0=-11;
+        if (x0>10){
+                x0=10;
         }
-        for (float x = x0; x < 12; ++x) {
-            float y = y0;
-            float u = x / 60.0f + 0.5f;
-            float v = y / 60.0f + 0.5f;
+        for (float x=x0;x<12;++x){
+
+            float y=y0;
+            float u=x/60.0f +0.5f;
+            float v=y/60.0f +0.5f;
             const float height = evaluate_terrain_z_T(u, v);
             const float z_y = evaluate_terrain_z_y(u, v);
             const float z_X = evaluate_terrain_z_X(u, v);
             const float z_Y = evaluate_terrain_z_Y(u, v);
-            float z = -5 * atan(0.5f * (x - 27) + height) + 5 * atan(0.5f * (x + 13) + z_X) - 5 * atan(0.5f * (y - 28) + z_y) + 5 * atan(0.5f * (y + 13) + z_Y) + 0.8f;
-            keyframe_giraffe.push_back({ {x,y,z},t });
+            float z=- 5 * atan(0.5f * (x - 27) + height) + 5 * atan(0.5f * (x + 13) + z_X) - 5 * atan(0.5f * (y - 28) + z_y) + 5 * atan(0.5f * (y + 13) + z_Y)+0.8f;
+            keyframe_giraffe.push_back({{x,y,z},t});
             t++;
+
         }
-        for (float y = -10; y < 11; ++y) {
-            float x = 11;
-            float u = x / 60.0f + 0.5f;
-            float v = y / 60.0f + 0.5f;
+        for (float y=-10;y<11;++y){
+
+            float x=11;
+            float u=x/60.0f +0.5f;
+            float v=y/60.0f +0.5f;
             const float height = evaluate_terrain_z_T(u, v);
             const float z_y = evaluate_terrain_z_y(u, v);
             const float z_X = evaluate_terrain_z_X(u, v);
             const float z_Y = evaluate_terrain_z_Y(u, v);
-            float z = -5 * atan(0.5f * (x - 27) + height) + 5 * atan(0.5f * (x + 13) + z_X) - 5 * atan(0.5f * (y - 28) + z_y) + 5 * atan(0.5f * (y + 13) + z_Y) + 0.8f;
-            keyframe_giraffe.push_back({ {x,y,z},t });
+            float z=- 5 * atan(0.5f * (x - 27) + height) + 5 * atan(0.5f * (x + 13) + z_X) - 5 * atan(0.5f * (y - 28) + z_y) + 5 * atan(0.5f * (y + 13) + z_Y)+0.8f;
+            keyframe_giraffe.push_back({{x,y,z},t});
             t++;
+
         }
-        for (float x = 9; x > -12; --x) {
-            float y = 10;
-            float u = x / 60.0f + 0.5f;
-            float v = y / 60.0f + 0.5f;
+        for (float x=9;x>-12;--x){
+
+            float y=10;
+            float u=x/60.0f +0.5f;
+            float v=y/60.0f +0.5f;
             const float height = evaluate_terrain_z_T(u, v);
             const float z_y = evaluate_terrain_z_y(u, v);
             const float z_X = evaluate_terrain_z_X(u, v);
             const float z_Y = evaluate_terrain_z_Y(u, v);
-            float z = -5 * atan(0.5f * (x - 27) + height) + 5 * atan(0.5f * (x + 13) + z_X) - 5 * atan(0.5f * (y - 28) + z_y) + 5 * atan(0.5f * (y + 13) + z_Y) + 0.8f;
-            keyframe_giraffe.push_back({ {x,y,z},t });
+            float z=- 5 * atan(0.5f * (x - 27) + height) + 5 * atan(0.5f * (x + 13) + z_X) - 5 * atan(0.5f * (y - 28) + z_y) + 5 * atan(0.5f * (y + 13) + z_Y)+0.8f;
+            keyframe_giraffe.push_back({{x,y,z},t});
             t++;
+
         }
-        for (float y = 9; y > -12; --y) {
-            float x = -11;
-            float u = x / 60.0f + 0.5f;
-            float v = y / 60.0f + 0.5f;
+        for (float y=9;y>-12;--y){
+
+            float x=-11;
+            float u=x/60.0f +0.5f;
+            float v=y/60.0f +0.5f;
             const float height = evaluate_terrain_z_T(u, v);
             const float z_y = evaluate_terrain_z_y(u, v);
             const float z_X = evaluate_terrain_z_X(u, v);
             const float z_Y = evaluate_terrain_z_Y(u, v);
-            float z = -5 * atan(0.5f * (x - 27) + height) + 5 * atan(0.5f * (x + 13) + z_X) - 5 * atan(0.5f * (y - 28) + z_y) + 5 * atan(0.5f * (y + 13) + z_Y) + 0.8f;
-            keyframe_giraffe.push_back({ {x,y,z},t });
+            float z=- 5 * atan(0.5f * (x - 27) + height) + 5 * atan(0.5f * (x + 13) + z_X) - 5 * atan(0.5f * (y - 28) + z_y) + 5 * atan(0.5f * (y + 13) + z_Y)+0.8f;
+            keyframe_giraffe.push_back({{x,y,z},t});
             t++;
         }
-        for (float x = -10; x < x0 + 3; x++) {
-            float y = -11;
-            float u = x / 60.0f + 0.5f;
-            float v = y / 60.0f + 0.5f;
+        for (float x=-10;x<x0+3;x++){
+
+            float y=-11;
+            float u=x/60.0f +0.5f;
+            float v=y/60.0f +0.5f;
             const float height = evaluate_terrain_z_T(u, v);
             const float z_y = evaluate_terrain_z_y(u, v);
             const float z_X = evaluate_terrain_z_X(u, v);
             const float z_Y = evaluate_terrain_z_Y(u, v);
-            float z = -5 * atan(0.5f * (x - 27) + height) + 5 * atan(0.5f * (x + 13) + z_X) - 5 * atan(0.5f * (y - 28) + z_y) + 5 * atan(0.5f * (y + 13) + z_Y) + 0.8f;
-            keyframe_giraffe.push_back({ {x,y,z},t });
+            float z=- 5 * atan(0.5f * (x - 27) + height) + 5 * atan(0.5f * (x + 13) + z_X) - 5 * atan(0.5f * (y - 28) + z_y) + 5 * atan(0.5f * (y + 13) + z_Y)+0.8f;
+            keyframe_giraffe.push_back({{x,y,z},t});
             t++;
+        }
+
+    }
+
+    if (0<x0 && -1<y0<11){
+        if (y0>10){
+            y0=10;
+        }
+        for (float y=y0;y<11;++y){
+
+            float x=11;
+            float u=x/60.0f +0.5f;
+            float v=y/60.0f +0.5f;
+            const float height = evaluate_terrain_z_T(u, v);
+            const float z_y = evaluate_terrain_z_y(u, v);
+            const float z_X = evaluate_terrain_z_X(u, v);
+            const float z_Y = evaluate_terrain_z_Y(u, v);
+            float z=- 5 * atan(0.5f * (x - 27) + height) + 5 * atan(0.5f * (x + 13) + z_X) - 5 * atan(0.5f * (y - 28) + z_y) + 5 * atan(0.5f * (y + 13) + z_Y)+0.8f;
+            keyframe_giraffe.push_back({{x,y,z},t});
+            t++;
+
+        }
+        for (float x=9;x>-12;--x){
+
+            float y=10;
+            float u=x/60.0f +0.5f;
+            float v=y/60.0f +0.5f;
+            const float height = evaluate_terrain_z_T(u, v);
+            const float z_y = evaluate_terrain_z_y(u, v);
+            const float z_X = evaluate_terrain_z_X(u, v);
+            const float z_Y = evaluate_terrain_z_Y(u, v);
+            float z=- 5 * atan(0.5f * (x - 27) + height) + 5 * atan(0.5f * (x + 13) + z_X) - 5 * atan(0.5f * (y - 28) + z_y) + 5 * atan(0.5f * (y + 13) + z_Y)+0.8f;
+            keyframe_giraffe.push_back({{x,y,z},t});
+            t++;
+
+        }
+        for (float y=9;y>-12;--y){
+
+            float x=-11;
+            float u=x/60.0f +0.5f;
+            float v=y/60.0f +0.5f;
+            const float height = evaluate_terrain_z_T(u, v);
+            const float z_y = evaluate_terrain_z_y(u, v);
+            const float z_X = evaluate_terrain_z_X(u, v);
+            const float z_Y = evaluate_terrain_z_Y(u, v);
+            float z=- 5 * atan(0.5f * (x - 27) + height) + 5 * atan(0.5f * (x + 13) + z_X) - 5 * atan(0.5f * (y - 28) + z_y) + 5 * atan(0.5f * (y + 13) + z_Y)+0.8f;
+            keyframe_giraffe.push_back({{x,y,z},t});
+            t++;
+        }
+        for (float x=-11;x<11;++x){
+
+            float y=-11;
+            float u=x/60.0f +0.5f;
+            float v=y/60.0f +0.5f;
+            const float height = evaluate_terrain_z_T(u, v);
+            const float z_y = evaluate_terrain_z_y(u, v);
+            const float z_X = evaluate_terrain_z_X(u, v);
+            const float z_Y = evaluate_terrain_z_Y(u, v);
+            float z=- 5 * atan(0.5f * (x - 27) + height) + 5 * atan(0.5f * (x + 13) + z_X) - 5 * atan(0.5f * (y - 28) + z_y) + 5 * atan(0.5f * (y + 13) + z_Y)+0.8f;
+            keyframe_giraffe.push_back({{x,y,z},t});
+            t++;
+
+        }
+        for (float y=-10;y<y0+3;++y){
+
+            float x=11;
+            float u=x/60.0f +0.5f;
+            float v=y/60.0f +0.5f;
+            const float height = evaluate_terrain_z_T(u, v);
+            const float z_y = evaluate_terrain_z_y(u, v);
+            const float z_X = evaluate_terrain_z_X(u, v);
+            const float z_Y = evaluate_terrain_z_Y(u, v);
+            float z=- 5 * atan(0.5f * (x - 27) + height) + 5 * atan(0.5f * (x + 13) + z_X) - 5 * atan(0.5f * (y - 28) + z_y) + 5 * atan(0.5f * (y + 13) + z_Y)+0.8f;
+            keyframe_giraffe.push_back({{x,y,z},t});
+            t++;
+
         }
     }
-    if (0 < x0 && -1 < y0 < 11) {
-        if (y0 > 10) {
-            y0 = 10;
+    if (x0<1 && y0>-1){
+        y0=10;
+        if (x0<-11){
+            x0=-11;
         }
-        for (float y = y0; y < 11; ++y) {
-            float x = 11;
-            float u = x / 60.0f + 0.5f;
-            float v = y / 60.0f + 0.5f;
+        for (float x=x0;x>-12;--x){
+            float y=y0;
+            float u=x/60.0f +0.5f;
+            float v=y/60.0f +0.5f;
             const float height = evaluate_terrain_z_T(u, v);
             const float z_y = evaluate_terrain_z_y(u, v);
             const float z_X = evaluate_terrain_z_X(u, v);
             const float z_Y = evaluate_terrain_z_Y(u, v);
-            float z = -5 * atan(0.5f * (x - 27) + height) + 5 * atan(0.5f * (x + 13) + z_X) - 5 * atan(0.5f * (y - 28) + z_y) + 5 * atan(0.5f * (y + 13) + z_Y) + 0.8f;
-            keyframe_giraffe.push_back({ {x,y,z},t });
+            float z=- 5 * atan(0.5f * (x - 27) + height) + 5 * atan(0.5f * (x + 13) + z_X) - 5 * atan(0.5f * (y - 28) + z_y) + 5 * atan(0.5f * (y + 13) + z_Y)+0.8f;
+            keyframe_giraffe.push_back({{x,y,z},t});
             t++;
+
         }
-        for (float x = 9; x > -12; --x) {
-            float y = 10;
-            float u = x / 60.0f + 0.5f;
-            float v = y / 60.0f + 0.5f;
+        for (float y=9;y>-12;--y){
+
+            float x=-11;
+            float u=x/60.0f +0.5f;
+            float v=y/60.0f +0.5f;
             const float height = evaluate_terrain_z_T(u, v);
             const float z_y = evaluate_terrain_z_y(u, v);
             const float z_X = evaluate_terrain_z_X(u, v);
             const float z_Y = evaluate_terrain_z_Y(u, v);
-            float z = -5 * atan(0.5f * (x - 27) + height) + 5 * atan(0.5f * (x + 13) + z_X) - 5 * atan(0.5f * (y - 28) + z_y) + 5 * atan(0.5f * (y + 13) + z_Y) + 0.8f;
-            keyframe_giraffe.push_back({ {x,y,z},t });
+            float z=- 5 * atan(0.5f * (x - 27) + height) + 5 * atan(0.5f * (x + 13) + z_X) - 5 * atan(0.5f * (y - 28) + z_y) + 5 * atan(0.5f * (y + 13) + z_Y)+0.8f;
+            keyframe_giraffe.push_back({{x,y,z},t});
             t++;
         }
-        for (float y = 9; y > -12; --y) {
-            float x = -11;
-            float u = x / 60.0f + 0.5f;
-            float v = y / 60.0f + 0.5f;
+        for (float x=-10;x<11;++x){
+
+            float y=-11;
+            float u=x/60.0f +0.5f;
+            float v=y/60.0f +0.5f;
             const float height = evaluate_terrain_z_T(u, v);
             const float z_y = evaluate_terrain_z_y(u, v);
             const float z_X = evaluate_terrain_z_X(u, v);
             const float z_Y = evaluate_terrain_z_Y(u, v);
-            float z = -5 * atan(0.5f * (x - 27) + height) + 5 * atan(0.5f * (x + 13) + z_X) - 5 * atan(0.5f * (y - 28) + z_y) + 5 * atan(0.5f * (y + 13) + z_Y) + 0.8f;
-            keyframe_giraffe.push_back({ {x,y,z},t });
+            float z=- 5 * atan(0.5f * (x - 27) + height) + 5 * atan(0.5f * (x + 13) + z_X) - 5 * atan(0.5f * (y - 28) + z_y) + 5 * atan(0.5f * (y + 13) + z_Y)+0.8f;
+            keyframe_giraffe.push_back({{x,y,z},t});
             t++;
+
         }
-        for (float x = -11; x < 11; ++x) {
-            float y = -11;
-            float u = x / 60.0f + 0.5f;
-            float v = y / 60.0f + 0.5f;
+        for (float y=-10;y<11;++y){
+
+            float x=11;
+            float u=x/60.0f +0.5f;
+            float v=y/60.0f +0.5f;
             const float height = evaluate_terrain_z_T(u, v);
             const float z_y = evaluate_terrain_z_y(u, v);
             const float z_X = evaluate_terrain_z_X(u, v);
             const float z_Y = evaluate_terrain_z_Y(u, v);
-            float z = -5 * atan(0.5f * (x - 27) + height) + 5 * atan(0.5f * (x + 13) + z_X) - 5 * atan(0.5f * (y - 28) + z_y) + 5 * atan(0.5f * (y + 13) + z_Y) + 0.8f;
-            keyframe_giraffe.push_back({ {x,y,z},t });
+            float z=- 5 * atan(0.5f * (x - 27) + height) + 5 * atan(0.5f * (x + 13) + z_X) - 5 * atan(0.5f * (y - 28) + z_y) + 5 * atan(0.5f * (y + 13) + z_Y)+0.8f;
+            keyframe_giraffe.push_back({{x,y,z},t});
             t++;
+
         }
-        for (float y = -10; y < y0 + 3; ++y) {
-            float x = 10;
-            float u = x / 60.0f + 0.5f;
-            float v = y / 60.0f + 0.5f;
+        for (float x=9;x>x0-3;--x){
+
+            float y=10;
+            float u=x/60.0f +0.5f;
+            float v=y/60.0f +0.5f;
             const float height = evaluate_terrain_z_T(u, v);
             const float z_y = evaluate_terrain_z_y(u, v);
             const float z_X = evaluate_terrain_z_X(u, v);
             const float z_Y = evaluate_terrain_z_Y(u, v);
-            float z = -5 * atan(0.5f * (x - 27) + height) + 5 * atan(0.5f * (x + 13) + z_X) - 5 * atan(0.5f * (y - 28) + z_y) + 5 * atan(0.5f * (y + 13) + z_Y) + 0.8f;
-            keyframe_giraffe.push_back({ {x,y,z},t });
+            float z=- 5 * atan(0.5f * (x - 27) + height) + 5 * atan(0.5f * (x + 13) + z_X) - 5 * atan(0.5f * (y - 28) + z_y) + 5 * atan(0.5f * (y + 13) + z_Y)+0.8f;
+            keyframe_giraffe.push_back({{x,y,z},t});
             t++;
+
         }
     }
-    if (x0<1 && y0>-1) {
-        y0 = 10;
-        if (x0 < -11) {
-            x0 = -11;
+    if (x0<1 && y0<1){
+        x0=-11;
+        if (y0<-11){
+            y0=-11;
         }
-        for (float x = x0; x > -12; --x) {
-            float y = y0;
-            float u = x / 60.0f + 0.5f;
-            float v = y / 60.0f + 0.5f;
+        for (float y=y0;y>-12;--y){
+
+            float x=x0;
+            float u=x/60.0f +0.5f;
+            float v=y/60.0f +0.5f;
             const float height = evaluate_terrain_z_T(u, v);
             const float z_y = evaluate_terrain_z_y(u, v);
             const float z_X = evaluate_terrain_z_X(u, v);
             const float z_Y = evaluate_terrain_z_Y(u, v);
-            float z = -5 * atan(0.5f * (x - 27) + height) + 5 * atan(0.5f * (x + 13) + z_X) - 5 * atan(0.5f * (y - 28) + z_y) + 5 * atan(0.5f * (y + 13) + z_Y) + 0.8f;
-            keyframe_giraffe.push_back({ {x,y,z},t });
+            float z=- 5 * atan(0.5f * (x - 27) + height) + 5 * atan(0.5f * (x + 13) + z_X) - 5 * atan(0.5f * (y - 28) + z_y) + 5 * atan(0.5f * (y + 13) + z_Y)+0.8f;
+            keyframe_giraffe.push_back({{x,y,z},t});
             t++;
         }
-        for (float y = 9; y > -12; --y) {
-            float x = -11;
-            float u = x / 60.0f + 0.5f;
-            float v = y / 60.0f + 0.5f;
+        for (float x=-10;x<11;++x){
+
+            float y=-11;
+            float u=x/60.0f +0.5f;
+            float v=y/60.0f +0.5f;
             const float height = evaluate_terrain_z_T(u, v);
             const float z_y = evaluate_terrain_z_y(u, v);
             const float z_X = evaluate_terrain_z_X(u, v);
             const float z_Y = evaluate_terrain_z_Y(u, v);
-            float z = -5 * atan(0.5f * (x - 27) + height) + 5 * atan(0.5f * (x + 13) + z_X) - 5 * atan(0.5f * (y - 28) + z_y) + 5 * atan(0.5f * (y + 13) + z_Y) + 0.8f;
-            keyframe_giraffe.push_back({ {x,y,z},t });
+            float z=- 5 * atan(0.5f * (x - 27) + height) + 5 * atan(0.5f * (x + 13) + z_X) - 5 * atan(0.5f * (y - 28) + z_y) + 5 * atan(0.5f * (y + 13) + z_Y)+0.8f;
+            keyframe_giraffe.push_back({{x,y,z},t});
             t++;
+
         }
-        for (float x = -10; x < 11; ++x) {
-            float y = -11;
-            float u = x / 60.0f + 0.5f;
-            float v = y / 60.0f + 0.5f;
+        for (float y=-10;y<11;++y){
+
+            float x=11;
+            float u=x/60.0f +0.5f;
+            float v=y/60.0f +0.5f;
             const float height = evaluate_terrain_z_T(u, v);
             const float z_y = evaluate_terrain_z_y(u, v);
             const float z_X = evaluate_terrain_z_X(u, v);
             const float z_Y = evaluate_terrain_z_Y(u, v);
-            float z = -5 * atan(0.5f * (x - 27) + height) + 5 * atan(0.5f * (x + 13) + z_X) - 5 * atan(0.5f * (y - 28) + z_y) + 5 * atan(0.5f * (y + 13) + z_Y) + 0.8f;
-            keyframe_giraffe.push_back({ {x,y,z},t });
+            float z=- 5 * atan(0.5f * (x - 27) + height) + 5 * atan(0.5f * (x + 13) + z_X) - 5 * atan(0.5f * (y - 28) + z_y) + 5 * atan(0.5f * (y + 13) + z_Y)+0.8f;
+            keyframe_giraffe.push_back({{x,y,z},t});
             t++;
+
         }
-        for (float y = -10; y < 11; ++y) {
-            float x = 10;
-            float u = x / 60.0f + 0.5f;
-            float v = y / 60.0f + 0.5f;
+        for (float x=9;x>-12;--x){
+
+            float y=10;
+            float u=x/60.0f +0.5f;
+            float v=y/60.0f +0.5f;
             const float height = evaluate_terrain_z_T(u, v);
             const float z_y = evaluate_terrain_z_y(u, v);
             const float z_X = evaluate_terrain_z_X(u, v);
             const float z_Y = evaluate_terrain_z_Y(u, v);
-            float z = -5 * atan(0.5f * (x - 27) + height) + 5 * atan(0.5f * (x + 13) + z_X) - 5 * atan(0.5f * (y - 28) + z_y) + 5 * atan(0.5f * (y + 13) + z_Y) + 0.8f;
-            keyframe_giraffe.push_back({ {x,y,z},t });
+            float z=- 5 * atan(0.5f * (x - 27) + height) + 5 * atan(0.5f * (x + 13) + z_X) - 5 * atan(0.5f * (y - 28) + z_y) + 5 * atan(0.5f * (y + 13) + z_Y)+0.8f;
+            keyframe_giraffe.push_back({{x,y,z},t});
             t++;
+
         }
-        for (float x = 9; x > x0 - 3; --x) {
-            float y = 10;
-            float u = x / 60.0f + 0.5f;
-            float v = y / 60.0f + 0.5f;
+
+        for (float y=10;y>y0-3;--y){
+
+            float x=x0;
+            float u=x/60.0f +0.5f;
+            float v=y/60.0f +0.5f;
             const float height = evaluate_terrain_z_T(u, v);
             const float z_y = evaluate_terrain_z_y(u, v);
             const float z_X = evaluate_terrain_z_X(u, v);
             const float z_Y = evaluate_terrain_z_Y(u, v);
-            float z = -5 * atan(0.5f * (x - 27) + height) + 5 * atan(0.5f * (x + 13) + z_X) - 5 * atan(0.5f * (y - 28) + z_y) + 5 * atan(0.5f * (y + 13) + z_Y) + 0.8f;
-            keyframe_giraffe.push_back({ {x,y,z},t });
+            float z=- 5 * atan(0.5f * (x - 27) + height) + 5 * atan(0.5f * (x + 13) + z_X) - 5 * atan(0.5f * (y - 28) + z_y) + 5 * atan(0.5f * (y + 13) + z_Y)+0.8f;
+            keyframe_giraffe.push_back({{x,y,z},t});
             t++;
         }
+
     }
-    if (x0 < 1 && y0 < -1) {
-        x0 = -11;
-        if (y0 < -11) {
-            y0 = -11;
-        }
-        for (float y = y0; y > -12; --y) {
-            float x = x0;
-            float u = x / 60.0f + 0.5f;
-            float v = y / 60.0f + 0.5f;
-            const float height = evaluate_terrain_z_T(u, v);
-            const float z_y = evaluate_terrain_z_y(u, v);
-            const float z_X = evaluate_terrain_z_X(u, v);
-            const float z_Y = evaluate_terrain_z_Y(u, v);
-            float z = -5 * atan(0.5f * (x - 27) + height) + 5 * atan(0.5f * (x + 13) + z_X) - 5 * atan(0.5f * (y - 28) + z_y) + 5 * atan(0.5f * (y + 13) + z_Y) + 0.8f;
-            keyframe_giraffe.push_back({ {x,y,z},t });
-            t++;
-        }
-        for (float x = -10; x < 11; ++x) {
-            float y = -11;
-            float u = x / 60.0f + 0.5f;
-            float v = y / 60.0f + 0.5f;
-            const float height = evaluate_terrain_z_T(u, v);
-            const float z_y = evaluate_terrain_z_y(u, v);
-            const float z_X = evaluate_terrain_z_X(u, v);
-            const float z_Y = evaluate_terrain_z_Y(u, v);
-            float z = -5 * atan(0.5f * (x - 27) + height) + 5 * atan(0.5f * (x + 13) + z_X) - 5 * atan(0.5f * (y - 28) + z_y) + 5 * atan(0.5f * (y + 13) + z_Y) + 0.8f;
-            keyframe_giraffe.push_back({ {x,y,z},t });
-            t++;
-        }
-        for (float y = -10; y < 11; ++y) {
-            float x = 10;
-            float u = x / 60.0f + 0.5f;
-            float v = y / 60.0f + 0.5f;
-            const float height = evaluate_terrain_z_T(u, v);
-            const float z_y = evaluate_terrain_z_y(u, v);
-            const float z_X = evaluate_terrain_z_X(u, v);
-            const float z_Y = evaluate_terrain_z_Y(u, v);
-            float z = -5 * atan(0.5f * (x - 27) + height) + 5 * atan(0.5f * (x + 13) + z_X) - 5 * atan(0.5f * (y - 28) + z_y) + 5 * atan(0.5f * (y + 13) + z_Y) + 0.8f;
-            keyframe_giraffe.push_back({ {x,y,z},t });
-            t++;
-        }
-        for (float x = 9; x > -12; --x) {
-            float y = 10;
-            float u = x / 60.0f + 0.5f;
-            float v = y / 60.0f + 0.5f;
-            const float height = evaluate_terrain_z_T(u, v);
-            const float z_y = evaluate_terrain_z_y(u, v);
-            const float z_X = evaluate_terrain_z_X(u, v);
-            const float z_Y = evaluate_terrain_z_Y(u, v);
-            float z = -5 * atan(0.5f * (x - 27) + height) + 5 * atan(0.5f * (x + 13) + z_X) - 5 * atan(0.5f * (y - 28) + z_y) + 5 * atan(0.5f * (y + 13) + z_Y) + 0.8f;
-            keyframe_giraffe.push_back({ {x,y,z},t });
-            t++;
-        }
-        for (float y = 9; y > y0 - 3; --y) {
-            float x = x0;
-            float u = x / 60.0f + 0.5f;
-            float v = y / 60.0f + 0.5f;
-            const float height = evaluate_terrain_z_T(u, v);
-            const float z_y = evaluate_terrain_z_y(u, v);
-            const float z_X = evaluate_terrain_z_X(u, v);
-            const float z_Y = evaluate_terrain_z_Y(u, v);
-            float z = -5 * atan(0.5f * (x - 27) + height) + 5 * atan(0.5f * (x + 13) + z_X) - 5 * atan(0.5f * (y - 28) + z_y) + 5 * atan(0.5f * (y + 13) + z_Y) + 0.8f;
-            keyframe_giraffe.push_back({ {x,y,z},t });
-            t++;
-        }
-    }
+
+
+
     return keyframe_giraffe;
+
+
 }
 void init_time(  vcl::timer_interval& timer, std::vector<vec3t> &keyframe_giraffe_2){
     timer.t_min = keyframe_giraffe_2[1].t;                   // first time of the keyframe
@@ -427,11 +469,11 @@ void init_giraffe(vcl::hierarchy_mesh_drawable& giraffe, std::vector<std::vector
     giraffe = create_giraffe();
     giraffe.set_shader_for_all_elements(shaders["mesh"]);
 
-    keyframe_giraffe.push_back(create_keyframes_g(-11, -10));
-    keyframe_giraffe.push_back(create_keyframes_g(-4, 6));
-    keyframe_giraffe.push_back(create_keyframes_g(3, -6));
-    keyframe_giraffe.push_back(create_keyframes_g(1, -7));
-    keyframe_giraffe.push_back(create_keyframes_g(3, 9));
+    keyframe_giraffe=create_keyframes_g(-11,-10);
+    keyframe_giraffe_2=create_keyframes_g(-4,1);
+    keyframe_giraffe_3=create_keyframes_g(5,-5);
+    keyframe_giraffe_4=create_keyframes_g(-1,-7);
+    keyframe_giraffe_5=create_keyframes_g(3,3);
 
     init_time(timer_g, keyframe_giraffe[0]);
     init_time(timer_g_2, keyframe_giraffe[1]);
